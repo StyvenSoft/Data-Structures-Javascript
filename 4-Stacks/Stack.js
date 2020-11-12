@@ -1,13 +1,41 @@
 const LinkedList = require('./LinkedList');
 
 class Stack {
-  constructor() {
-    this.stack = new LinkedList();
-  }
-  
-  peek() {
-    return this.stack.head.data;
-  }
+    constructor(maxSize = Infinity) {
+        this.stack = new LinkedList();
+        this.size = 0;
+        this.maxSize = maxSize;
+    }
+
+    hasRoom() {
+        return (this.size < this.maxSize);
+    }
+
+    isEmpty() {
+        return (this.size === 0);
+    }
+
+    push(value) {
+        this.stack.addToHead(value);
+    }
+
+    pop() {
+        if (this.size > 0) {
+            const value = this.stack.removeHead();
+            this.size--;
+            return value;
+        } else {
+            console.log('Stack is empty');
+        }
+    }
+
+    peek() {
+        if (this.size > 0) {
+            return this.stack.head.data;
+        } else {
+            return null;
+        }
+    }
 }
 
 module.exports = Stack;
