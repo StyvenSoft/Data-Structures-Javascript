@@ -15,16 +15,23 @@ class TreeNode {
     removeChild(childToRemove) {
         const length = this.children.length;
         this.children = this.children.filter(child => {
-            if (childToRemove instanceof TreeNode) {
-                return childToRemove !== child;
-            } else {
-                return child.data !== childToRemove;
-            }
+            return childToRemove instanceof TreeNode
+                ? child !== childToRemove
+                : child.data !== childToRemove;
         });
 
         if (length === this.children.length) {
             this.children.forEach(child => child.removeChild(childToRemove));
         }
+    }
+
+    print(level = 0) {
+        let result = '';
+        for (let i = 0; i < level; i++) {
+            result += '-- ';
+        }
+        console.log(`${result}${this.data}`);
+        this.children.forEach(child => child.print(level + 1));
     }
 };
 
