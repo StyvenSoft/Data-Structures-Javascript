@@ -33,6 +33,20 @@ class TreeNode {
         console.log(`${result}${this.data}`);
         this.children.forEach(child => child.print(level + 1));
     }
+
+    depthFirstTraversal() {
+        console.log(this.data);
+        this.children.forEach(child => child.depthFirstTraversal());
+    }
+
+    breadthFirstTraversal() {
+        let queue = [this];
+        while (queue.length > 0) {
+            const current = queue.shift();
+            console.log(current.data);
+            queue = queue.concat(current.children);
+        }
+    }
 };
 
 module.exports = TreeNode;

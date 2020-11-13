@@ -25,4 +25,5 @@ for (let i = 0; i < 3; i++) {
 
 // pretty-print the tree
 tree.print();
-
+//tree.depthFirstTraversal();
+tree.breadthFirstTraversal();
