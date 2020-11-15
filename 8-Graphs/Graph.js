@@ -13,6 +13,10 @@ class Graph {
         return newVertex;
     }
 
+    removeVertex(vertex) {
+        this.vertices = this.vertices.filter(v => v !== vertex);
+    }
+
     print() {
         // const vertexList = this.vertices || [];
         // vertexList.forEach(vertex => vertex.print());
@@ -23,6 +27,8 @@ class Graph {
 const trainNetwork = new Graph();
 const atlantaStation = trainNetwork.addVertex('Atlanta');
 const newYorkStation = trainNetwork.addVertex('New York');
+
+trainNetwork.removeVertex(atlantaStation);
 
 trainNetwork.print();
 
